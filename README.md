@@ -68,7 +68,8 @@ Any pull request is welcome.
 ## FAQ
 
 ### Is this a copycat of [ClashX](https://github.com/yichengchen/clashX) or [Clash for Windows](https://github.com/Fndroid/clash_for_windows_pkg)?
-Not exactly. I've been use ClashX for several months in the daily basis and I like it. It's easy to use and nicely designed. But I also need a decent `Clash` client on my Ubuntu Desktop. And the interface must be easy enough for anyone to use because I don't want to teach my wife how to edit proxy rules or how to use remote configuration files. So I decide to made my own `Clash` GUI client. I did NOT take any code or assets from those two projects but they did gave me some ideas about interface design and implementation.
+
+Not exactly. I've been using ClashX for several months and I like it. It's easy to use and nicely designed. But I also need a decent Clash client on my Ubuntu Desktop. And the interface must be easy enough for anyone to use because I don't want to teach my wife how to edit proxy rules or how to use remote configuration files. So I decide to make my own Clash GUI client. I did NOT take any code or assets from those two projects but they did give me some ideas about interface design and implementation.
 
 ### I don't like Electron.
 Me either.
