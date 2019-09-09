@@ -1,0 +1,44 @@
+.SettingsPanel {
+    width: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.SettingsWrapper {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    background: white;
+    z-index: 1;
+    margin: 16px 12px;
+    padding: 16px 0px;
+    border-radius: 0px !important;
+    flex-direction: row;
+}
+
+.SettingsRow {
+    display: flex;
+    height: 3rem;
+    font-size: 1.2rem;
+    line-height: 3rem;
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: center;
+}
+.SettingsRow p {
+    flex: 1;
+    text-align: left;
+    height: 3rem;
+    line-height: 3rem;
+    margin: 0;
+}
+.SettingsRow input {
+    width: unset;
+}
+
+.SettingsSave {
+    width: 100px;
+    align-self: 'flex-end'
+}

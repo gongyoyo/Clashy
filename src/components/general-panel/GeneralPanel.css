@@ -1,0 +1,32 @@
+.general-list-wrapper {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    background: white;
+    z-index: 1;
+    margin: 16px 12px;
+    padding: 16px 0px;
+    border-radius: 0px !important;
+}
+
+.list {
+    width: 100%;
+    flex: 1;
+    background: white;
+}
+
+.list-item {
+    display: flex;
+    flex-direction: row;
+}
+
+.title {
+    font-size: 1.4rem;
+    text-align: left;
+    display: flex;
+    flex: 1;
+}
+
+.value {
+    font-size: 1.4rem
+}

@@ -1,0 +1,12 @@
+.ContentPanel {
+    padding: 0px 10px;
+    height: calc(100% - 84px);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background: #F5F5F5; */
+    padding-top: 64px;
+    padding-bottom: 10px;
+}

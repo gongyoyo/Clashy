@@ -1,0 +1,14 @@
+.speed-o-meter-icon {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.speed-o-meter-text {
+}
+.speed-o-meter-text p {
+    display: inline-block;
+    margin: 0px 0px;
+    padding: 0px 0px;
+}

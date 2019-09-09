@@ -1,0 +1,43 @@
+.about-panel {
+    width: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-wrapper {
+    display: flex;
+    flex: 1;
+    align-items: flex-start;
+    background: white;
+    z-index: 1;
+    margin: 16px 12px;
+    padding: 16px;
+    border-radius: 0px !important;
+    flex-direction: column;
+}
+.credits {
+    display: flex;
+    flex-direction: row;
+}
+.credits p {
+    margin: 0px 0px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 400;
+    color: #E1315A;
+}
+.donation {
+    display: flex;
+    flex-direction: column;
+}
+.donation img {
+    width: 180;
+    height: 180;
+    margin: 10px 10px
+}
+.donation p {
+    margin: 10px 15px;
+}
