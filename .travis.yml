@@ -15,6 +15,10 @@ env:
     - ELECTRON_CACHE=$HOME/.cache/electron
     - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
 
+before_deploy:
+  - if [ "$TRAVIS_OS_NAME" = osx ]; then chmod +x add-osx-cert.sh; fi
+  - if [ "$TRAVIS_OS_NAME" = osx ]; then ./add-osx-cert.sh; fi
+
 jobs:
   include:
     - stage: Build for Windows & Mac
@@ -22,6 +26,7 @@ jobs:
       osx_image: xcode10.1
       script:
         - yarn run dist --mac --win
+        - yarn run publish always
       before_cache:
         - rm -rf $HOME/.cache/electron-builder/wine
     - stage: Build for linux
@@ -29,3 +34,4 @@ jobs:
       dist: trusty
       script:
         - yarn run dist
+        - yarn run publish onTagOrDraft

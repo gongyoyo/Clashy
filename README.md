@@ -7,6 +7,12 @@
 
 A GUI proxy client for Windows / macOS / Ubuntu Desktop based on [Clash](https://github.com/Dreamacro/clash) and [Electron](https://electronjs.org/)
 
+<div align="center">
+<a href="https://travis-ci.org/SpongeNobody/Clashy">
+<img src="https://api.travis-ci.org/SpongeNobody/Clashy.svg?branch=master" width="80" />
+</a>
+</div>
+
 ## Features
 
 - Easy to use interface.
