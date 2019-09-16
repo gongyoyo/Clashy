@@ -17,7 +17,7 @@ env:
 
 jobs:
   include:
-    - stage: Build for Windows & Mac
+    - stage: Build for Mac
       os: osx
       osx_image: xcode10.1
       before_script:
@@ -25,13 +25,23 @@ jobs:
         - if [ "$TRAVIS_OS_NAME" = osx ]; then ./add-osx-cert.sh; fi
         - node pre-build.js
       script:
-        - yarn run dist --mac --win
+        - yarn run dist
         - yarn run publish always
       before_cache:
         - rm -rf $HOME/.cache/electron-builder/wine
+    - stage: Build for Windows
+      os: windows
+      language: node_js
+      before_script:
+        -node pre-build.js
+      script:
+        - yarn run dist
+        - yarn run publish onTagOrDraft
     - stage: Build for linux
       os: linux
       dist: trusty
+      before_script:
+        - node pre-build.js
       script:
         - yarn run dist
         - yarn run publish onTagOrDraft
