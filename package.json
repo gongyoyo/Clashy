@@ -143,6 +143,35 @@
     "dmg": {
       "sign": false
     },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable"
+        }
+      ],
+      "icon": "build-resources/icon.ico"
+    },
+    "nsis": {
+      "runAfterFinish": true,
+      "installerIcon": "build-resources/icon.ico",
+      "artifactName": "Clashy-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "Clashy.exe"
+    },
+    "appx": {
+      "applicationId": "bob.nobody.bender",
+      "backgroundColor": "#464646",
+      "identityName": "bob.nobody.bender",
+      "publisherDisplayName": "SpongeNobody",
+      "artifactName": "Clashy-${version}.${ext}"
+    },
     "files": [
       "!node_modules",
       "package.json",

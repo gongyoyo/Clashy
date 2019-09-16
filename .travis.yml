@@ -23,6 +23,7 @@ jobs:
       before_script:
         - if [ "$TRAVIS_OS_NAME" = osx ]; then chmod +x add-osx-cert.sh; fi
         - if [ "$TRAVIS_OS_NAME" = osx ]; then ./add-osx-cert.sh; fi
+        - node pre-build.js
       script:
         - yarn run dist --mac --win
         - yarn run publish always

@@ -39,7 +39,6 @@ Download latest release from [Release Page](https://github.com/SpongeNobody/Clas
 
 - Clone this project & run `yarn install`
 - Run `node pre-build.js` to download clash binary for **current** platform.
-- Un-zip downloaded binary package in `clash-binaries` folder.
 - Run `yarn start` to start dev server for webpage.
 - Run `yarn start:electron` to start electron main process. Or hit run button in `VSCode`.
 
