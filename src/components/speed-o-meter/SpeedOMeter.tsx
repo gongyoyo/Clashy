@@ -30,12 +30,22 @@ export function SpeedOMeter() {
         <div style={{ padding: '16px' }}>
             <div className='speed-o-meter-text'>
                 <img src={ic_upload} className='speed-o-meter-icon' />
-                <p>{Number((traffic.up || 0) / 1024).toFixed(2)}k</p>
+                <p>{parseSpeed(traffic.up || 0)}</p>
             </div>
             <div className='speed-o-meter-text'>
                 <img src={ic_download} className='speed-o-meter-icon' />
-                <p>{Number((traffic.down || 0) / 1024).toFixed(2)}k</p>
+                <p>{parseSpeed(traffic.down)}</p>
             </div>
         </div>
     )
+}
+
+function parseSpeed(input: number): string {
+    let speed = Number((input || 0) / 1024)
+    let suffix = 'K'
+    if (speed >= 1024) {
+        speed = speed / 1024
+        suffix = 'M'
+    }
+    return `${speed.toFixed(2)}${suffix}`
 }
