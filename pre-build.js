@@ -2,6 +2,7 @@ const https = require('https')
 const path = require('path')
 const fs = require('fs')
 const request = require('request')
+const zlib = require('zlib')
 
 const prefix = 'https://github.com/Dreamacro/clash/releases/download'
 const version = 'v0.15.0'
@@ -47,24 +48,62 @@ async function downloadClashBinary() {
     const filePath = path.join('.', 'clash-binaries', fileName + ext)
     if (fs.existsSync(filePath)) {
         console.log(`Clash binary exists for Platform: ${platform}, Arch: ${arch}`)
-        return Promise.resolve()
+        return Promise.resolve(filePath)
     }
     const fos = fs.createWriteStream(filePath)
     return new Promise((resolve, reject) => {
         console.log(`Prepare to download Clash binary for Platform ${platform}, Arch: ${arch}`)
-        request.get(url)
-            .on('finish', () => {
-                resolve()
-            })
-            .on('error', () => {
-                reject()
-            })
+        const stream = request.get(url)
             .pipe(fos)
+        
+        stream.on('finish', () => {
+            resolve(filePath)
+        })
+        .on('error', () => {
+            reject()
+        })
     })
 }
 
-downloadClashBinary().then(() => {
+function unZipGzFile(filePath) {
+    return new Promise((resolve, reject) => {
+        console.log(filePath)
+        const fileContents = fs.createReadStream(filePath);
+        const writeStream = fs.createWriteStream(filePath.slice(0, -3));
+        const unzip = zlib.createGunzip();
+        fileContents.pipe(unzip).pipe(writeStream).on('finish', err => {
+            if (err) {
+                reject(err)
+            }
+            resolve()
+        })
+    })
+}
+
+function unZipZipFile(filePath) {
+    return new Promise((resolve, reject) => {
+        const fileContents = fs.createReadStream(filePath);
+        const writeStream = fs.createWriteStream(filePath.slice(0, -4));
+        const unzip = zlib.createUnzip()
+        fileContents.pipe(unzip).pipe(writeStream).on('finish', err => {
+            if (err) {
+                reject(err)
+            }
+            resolve()
+        })
+    })
+}
+
+downloadClashBinary().then((filePath) => {
     console.log('Clash binary downloaded.')
+    console.log('Extracting...')
+    if (process.platform === 'win32') {
+        return unZipZipFile(filePath)
+    } else {
+        return unZipGzFile(filePath)
+    }
+}).then(() => {
+    console.log('Done.')
 }).catch(e => {
     console.error(e)
 })
