@@ -75,7 +75,10 @@ function unZipGzFile(filePath) {
         fileContents.pipe(unzip).pipe(writeStream).on('finish', err => {
             if (err) {
                 reject(err)
+                return
             }
+            fs.unlinkSync(filePath)
+            fs.chmodSync(filePath.slice(0, -3), 0o755)
             resolve()
         })
     })
@@ -87,7 +90,9 @@ function unZipZipFile(filePath) {
         zip.extractAllToAsync(path.join('.', 'clash-binaries'), true, err => {
             if (err) {
                 reject(err)
+                return
             }
+            fs.unlinkSync(filePath)
             resolve()
         })
     })
