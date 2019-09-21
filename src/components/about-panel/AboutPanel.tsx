@@ -5,6 +5,8 @@ import './AboutPanel.css'
 import { callIPC } from '../../native-support/message-queue'
 import { BRG_MSG_OPEN_LINK } from '../../native-support/message-constants'
 
+import pJson from '../../../package.json'
+
 import eth from '../../assets/eth.jpeg'
 import btc from '../../assets/btc.jpeg'
 
@@ -21,6 +23,7 @@ export const AboutPanel = () => {
         <div className='about-panel'>
             <div style={{ position: 'fixed', background: '#3F51B5', height: '180px', width: '100%', top: 0, left: 0, zIndex: 0 }} />
             <Paper className='about-wrapper'>
+                <p style={{ fontWeight: 'bold' }}>Clashy v{pJson.version}</p>
                 <p style={{ fontWeight: 'bold' }}>Credits:</p>
                 <div className='credits' >
                     <p onClick={openLink(CLASH_LINK)}>Clash</p>
