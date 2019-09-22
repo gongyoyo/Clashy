@@ -34,8 +34,8 @@
     flex-direction: column;
 }
 .donation img {
-    width: 180;
-    height: 180;
+    width: 140px;
+    height: 140px;
     margin: 10px 10px
 }
 .donation p {

@@ -22,6 +22,11 @@ function initializeTray(_window, _createWindow) {
     ])
     tray.setToolTip('Clashy')
     tray.setContextMenu(contextMenu)
+    tray.on('double-click', () => {
+        if (isWindows()) {
+            showWindow()
+        }
+    })
 }
 
 function setWindowInstance(_window) {

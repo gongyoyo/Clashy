@@ -58,13 +58,14 @@ Download latest release from [Release Page](https://github.com/SpongeNobody/Clas
 
 ## Roadmap & TODOs
 
-- [ ] Auto update
-- [ ] Post build script to zip binaries
+- [x] Auto update
+- [x] ~~Post build script to zip binaries~~
 - [ ] Logout current clash client
 - [ ] Use external clash binary
 - [ ] Login interface for external clash binary
 - [ ] Clash binary update
 - [ ] View Clash logs
+- [ ] Subscription auto-update
 
 
 ## Contribution

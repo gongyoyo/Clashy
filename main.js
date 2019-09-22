@@ -79,19 +79,30 @@ function createWindow() {
     return win
 }
 
-// Electron 会在初始化后并准备
-// 创建浏览器窗口时，调用这个函数。
-// 部分 API 在 ready 事件触发后才能使用。
-app.on('ready', () => {
-    autoUpdater.checkForUpdatesAndNotify();
-    initialConfigsIfNeeded().then(() => {
-        createWindow()
-        setMainMenu()
-        initializeTray(win, createWindow)
-    }).catch(e => {
-        console.error(e)
-    })
+const singleInstanceLock = app.requestSingleInstanceLock()
+if (!singleInstanceLock) {
+    app.quit()
+} else {
+    app.on('second-instance', (event, commandLine, workingDirectory) => {
+        if (win != null && win.isDestroyed()) {
+            win.show()
+            if (app.dock != null) {
+                app.dock.show()
+            }
+        }
+      })
+    
+    app.on('ready', () => {
+        autoUpdater.checkForUpdatesAndNotify();
+        initialConfigsIfNeeded().then(() => {
+            createWindow()
+            setMainMenu()
+            initializeTray(win, createWindow)
+        }).catch(e => {
+            console.error(e)
+        })
 })
+}
 
 // 当全部窗口关闭时退出。
 app.on('window-all-closed', () => {
